@@ -17,7 +17,7 @@ class CreateMembersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('membership_type');
-            $table->boolean('active');
+            $table->date('date_of_birth');
             $table->timestamps();
         });
     }

@@ -37,12 +37,4 @@ class VenueModel extends Model implements Venue
     {
         return $this->name;
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function getLocation(): string
-    {
-        return $this->location;
-    }
 }

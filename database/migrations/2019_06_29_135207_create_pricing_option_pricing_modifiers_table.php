@@ -19,8 +19,8 @@ class CreatePricingOptionPricingModifiersTable extends Migration
             $table->dateTime('valid_from');
             $table->dateTime('valid_to')->nullable();
             $table->boolean('active')->default(0);
-            $table->index('pricing_modifier_id');
-            $table->index('pricing_option_id');
+            $table->foreign('pricing_modifier_id')->references('id')->on('pricing_modifiers');
+            $table->foreign('pricing_option_id')->references('id')->on('pricing_options');
             $table->timestamps();
         });
     }

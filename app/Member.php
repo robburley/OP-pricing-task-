@@ -25,9 +25,9 @@ interface Member
     public function getMembershipType(): string;
 
     /**
-     * @return bool
+     * @return \DateTime
      */
-    public function isActive(): bool;
+    public function getDateOfBirth(): \DateTime;
 
     /**
      * @return \DateTime|null

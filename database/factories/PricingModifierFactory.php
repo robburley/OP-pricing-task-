@@ -22,24 +22,24 @@ $modifierTypes = [
         ['multiplier' => 1.25],
         ['multiplier' => 2]
     ],
-    'basic_flat_adjustment' => [
+    'basic_adjustment' => [
         ['adjustment' => -5],
         ['adjustment' => -15],
         ['adjustment' => 2],
         ['adjustment' => 50]
     ],
+    'basic_override' => [
+        ['price' => 5]
+    ],
     'membership_type_flat_adjustment' => [
         ['adjustment' => -2, 'membership_types' => ['silver', 'gold', 'platinum']]
     ],
-    'membership_type_multiplier' => [
-        ['multiplier' => 0.85, 'membership_types' => ['silver']],
-        ['multiplier' => 0.75, 'membership_types' => ['gold']],
-        ['multiplier' => 0.50, 'membership_types' => ['platinum']],
-        ['multiplier' => 0.95, 'membership_types' => ['bronze', 'silver', 'gold', 'platinum']],
+    'member_age_multiplier' => [
+        ['multiplier' => 0.75, 'age_range' => ['from' => 0, 'to' => 25]],
     ],
-    'venue_location_multiplier' => [
-        ['multiplier' => 1.25, 'venue_locations' => ['London']],
-        ['multiplier' => 0.75, 'venue_locations' => ['Glasgow', 'Kidderminster']]
+    'venue_override' => [
+        ['price' => 3, 'venue_locations' => ['Glasgow']],
+        ['multiplier' => 5.50, 'venue_locations' => ['London', 'Kidderminster']]
     ]
 ];
 

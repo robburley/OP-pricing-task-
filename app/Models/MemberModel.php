@@ -26,6 +26,8 @@ class MemberModel extends Model implements Member
      */
     protected $table = 'members';
 
+    protected $dates = ['date_of_birth'];
+
     /**
      * @inheritDoc
      */
@@ -53,9 +55,10 @@ class MemberModel extends Model implements Member
     /**
      * @inheritDoc
      */
-    public function isActive(): bool
+    public function getDateOfBirth(): \DateTime
     {
-        return $this->active;
+        return $this->date_of_birth;
     }
+
 
 }

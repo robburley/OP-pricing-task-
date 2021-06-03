@@ -20,6 +20,6 @@ $factory->define(MemberModel::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'membership_type' => $faker->randomElement(['bronze','silver','gold','platinum']),
-        'active' => $faker->boolean(75)
+        'date_of_birth' => $faker->dateTimeBetween('-90 years', '-16 years')
     ];
 });
