@@ -74,7 +74,6 @@ We've provided interfaces and models for each object in the `App` and `App/Model
 - Copy `.env.example` to `.env`
 - `docker run --rm --interactive --tty --volume $PWD:/app composer install` to get a one time composer install for sail setup.
 - `sail up -d` to get the environment running. You can then use `sail` as a prefix to any command you want to run.
-- `sail composer install` to confirm dependencies are correct inside the container.
 - `sail artisan migrate:fresh` then `sail artisan db:seed` to setup and seed the example database.
 - You can stop the environment with `sail down`.
 - You can run artisan commands that you need using the `sail` prefix or open a cli using `sail shell` 
