@@ -59,8 +59,13 @@ We've provided interfaces and models for each object in the `App` and `App/Model
 - Venues [venues]
   - A simple object to use as a context for the purchase to arrive at a price.
 - Pricing Option [pricing_options]
+  - Contains the base price, a name and a type.
 - Pricing Modifier [pricing_modifiers] 
+  - A type (which determines how it should be processed/applied) and an array of settings for these stored as json.
+  - You may wish to modify this part of the schema to better suit your implementation.
+  - Conditions (e.g. age) and the effect on the price (e.g. multiply) are combined here.  
 - Pricing Option Pricing Modifier (Pivot) [pricing_options_pricing_modifiers]
+  - A pivot that links many modifiers to one pricing option.
 
 
 ### Setup
