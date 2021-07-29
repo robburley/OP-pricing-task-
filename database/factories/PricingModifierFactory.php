@@ -39,7 +39,7 @@ $modifierTypes = [
     ],
     'venue_override' => [
         ['price' => 3, 'venue_locations' => ['Glasgow']],
-        ['multiplier' => 5.50, 'venue_locations' => ['London', 'Kidderminster']]
+        ['price' => 5.50, 'venue_locations' => ['London', 'Kidderminster']]
     ]
 ];
 
