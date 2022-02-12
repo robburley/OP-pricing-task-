@@ -1,26 +1,24 @@
 <?php
 
+namespace Database\Factories;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-use App\Models\VenueModel;
-use Faker\Generator as Faker;
+class VenueFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $locations = ['London', 'Glasgow', 'Norwich', 'Kidderminster'];
+        $location = $this->faker->randomElement($locations);
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
-$locations = ['London','Glasgow','Norwich','Kidderminster'];
-$factory->define(VenueModel::class, function (Faker $faker) use ($locations) {
-    $location = $faker->randomElement($locations);
-    return [
-        'name' => $faker->company .  ' ' . $location,
-        'location' => $location
-    ];
-});
+        return [
+            'name' => $this->faker->company . ' ' . $location,
+            'location' => $location,
+        ];
+    }
+}

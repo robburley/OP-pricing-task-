@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
-use App\Traits\HasTimestampAccessors;
 
 /**
- * Class ProductPricingModifierModel
- * @package App/Models
+ * Class ProductPricingModifier.
  * @property int $pricing_modifier_id
  * @property int $pricing_option_id
  * @property \DateTime valid_from
@@ -19,7 +17,7 @@ use App\Traits\HasTimestampAccessors;
  */
 class PricingOptionPricingModifierPivot extends Pivot
 {
-    use HasTimestampAccessors;
+    use HasFactory;
 
     /**
      * @var string
@@ -35,46 +33,4 @@ class PricingOptionPricingModifierPivot extends Pivot
      * @var array
      */
     protected $dates = ['valid_from', 'valid_to'];
-
-    /**
-     * @return int
-     */
-    public function getPricingModifierId(): int
-    {
-        return $this->pricing_modifier_id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPricingOptionId(): int
-    {
-        return $this->pricing_option_id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getValidFrom(): \DateTime
-    {
-        return $this->valid_from;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getValidTo(): ?\DateTime
-    {
-        return $this->valid_to;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
-
-
 }
