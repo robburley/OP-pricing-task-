@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,7 +28,7 @@ class PricingOption extends Model
     public function pricingModifiers(): BelongsToMany
     {
         return $this->belongsToMany(PricingModifier::class)
-            ->withPivot([])
+            ->withPivot(['valid_from', 'valid_to', 'active'])
             ->withTimestamps();
     }
 
@@ -37,11 +38,12 @@ class PricingOption extends Model
     public function currentPricingModifiers(): BelongsToMany
     {
         return $this->pricingModifiers()
-            ->where('active', '=', 1)
-            ->where('valid_from', '<=', Carbon::now())
-            ->where(function ($query) {
-                $query->where('valid_to', '>=', Carbon::now());
-                $query->orWhereNull('valid_to');
+            ->wherePivot('active', '=', 1)
+            ->wherePivot('valid_from', '<=', Carbon::now())
+            ->where(function (Builder $query) {
+                // Hacky way of doing brackets, I may look at putting a PR into the framework to resolve this
+                $query->where('pricing_modifier_pricing_option.valid_to', '>=', Carbon::now())
+                    ->orWhereNull('pricing_modifier_pricing_option.valid_to');
             });
     }
 
