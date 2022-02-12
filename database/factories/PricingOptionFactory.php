@@ -18,7 +18,7 @@ class PricingOptionFactory extends Factory
         return [
             'name' => $this->faker->colorName . ' ' . ucfirst($type),
             'type' => $type,
-            'price' => $this->faker->randomFloat(2, 5.00, 200.00),
+            'price' => $this->faker->numberBetween(500, 20000),
         ];
     }
 }

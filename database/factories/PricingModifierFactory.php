@@ -21,23 +21,23 @@ class PricingModifierFactory extends Factory
                 ['multiplier' => 2],
             ],
             'basic_adjustment' => [
-                ['adjustment' => -5],
-                ['adjustment' => -15],
-                ['adjustment' => 2],
-                ['adjustment' => 50],
+                ['adjustment' => -500],
+                ['adjustment' => -1500],
+                ['adjustment' => 200],
+                ['adjustment' => 5000],
             ],
             'basic_override' => [
-                ['price' => 5],
+                ['price' => 500],
             ],
             'membership_type_flat_adjustment' => [
-                ['adjustment' => -2, 'membership_types' => ['silver', 'gold', 'platinum']],
+                ['adjustment' => -200, 'membership_types' => ['silver', 'gold', 'platinum']],
             ],
             'member_age_multiplier' => [
                 ['multiplier' => 0.75, 'age_range' => ['from' => 0, 'to' => 25]],
             ],
             'venue_override' => [
-                ['price' => 3, 'venue_locations' => ['Glasgow']],
-                ['price' => 5.50, 'venue_locations' => ['London', 'Kidderminster']],
+                ['price' => 30, 'venue_locations' => ['Glasgow']],
+                ['price' => 550, 'venue_locations' => ['London', 'Kidderminster']],
             ],
         ];
 
