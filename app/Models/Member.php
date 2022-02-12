@@ -21,4 +21,9 @@ class Member extends Model
     protected $table = 'members';
 
     protected $dates = ['date_of_birth'];
+
+    public function getAgeAttribute()
+    {
+        return $this->date_of_birth->diffInYears(now());
+    }
 }
