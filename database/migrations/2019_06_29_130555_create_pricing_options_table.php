@@ -17,7 +17,7 @@ class CreatePricingOptionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
-            $table->float('price');
+            $table->integer('price');
             $table->timestamps();
         });
     }
