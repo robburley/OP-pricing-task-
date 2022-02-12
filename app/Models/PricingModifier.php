@@ -28,7 +28,6 @@ class PricingModifier extends Model
      */
     public function pricingOptions(): BelongsToMany
     {
-        return $this->belongsToMany(PricingOption::class)
-            ->using(PricingOptionPricingModifierPivot::class);
+        return $this->belongsToMany(PricingOption::class);
     }
 }
