@@ -84,4 +84,17 @@ We've provided interfaces and models for each object in the `App` and `App/Model
 - By default, you can connect to the MySQL container on `localhost` port `3308`.
 - If this clashes with your local setup it can be overridden using `FORWARD_DB_PORT=3309` in the `.env` and restart sail.
 
+####Rob's Comments
+`A brief README description of the approach you took and why, any shortcuts you took, issues encountered etc.`
+
+I decided to use a simple CLI command that will take ask the user for the 3 inputs, validate that they exist in the database the process and return the lowest price for the customer.
+
+As you had the pricing modifier type in the database I decided to use a pattern of holding a mapping between the identifier of the modifier and a class to carry out the operation, returning the price then ordering it lowest to highest and returning the first value.
+
+The only issue I came across was down to the initial set up of the models, I opted for a simpler approach, removing the getters which seemed superfluous as they were being used to access properties via magic methods. I also updated the factories to model factory classes that came in Laravel 8 more as an exercise to understand the schema than anything else. 
+
+Due to the volume of rules, I decided to reduce the test coverage and assume that if the price was the same or lower than the original price then it satisfied the requirements. Obviously in a real world application I would set up specific modifications  with predictable results and test against all of them as well as with missing settings.
+
+One small change I made to the database schema was to store currency as pence rather than as floats, working in ecommerce for the last few years has opened my eyes to rounding issues that can come with running mathematical processes on floats. using the `BCMath`  functions can get around this, but I prefer to deal in pence where possible.
+
 
