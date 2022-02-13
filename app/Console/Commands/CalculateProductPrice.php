@@ -51,7 +51,7 @@ class CalculateProductPrice extends Command
         try {
             if ((new Validator($product, $venue, $member))->handle()) {
                 $calculator = new Calculator(
-                    Product::find($product),
+                    Product::with(['pricingOption.currentPricingModifiers'])->where('id', $product)->first(),
                     Venue::find($venue),
                     Member::find($member)
                 );
