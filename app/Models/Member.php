@@ -18,8 +18,6 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $table = 'members';
-
     protected $dates = ['date_of_birth'];
 
     public function getAgeAttribute()
