@@ -2,6 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Member;
+use App\Models\PricingModifier;
+use App\Models\PricingOption;
+use App\Models\Product;
+use App\Models\Venue;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -9,35 +15,37 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      *
+     * @throws \Exception
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $seedingMultiplier = config('app.seeding_multiplier', 1);
 
-        $pricingOptions = factory(\App\Models\PricingOptionModel::class, 50 * $seedingMultiplier)->create();
+        $pricingOptions = PricingOption::factory()->count(50 * $seedingMultiplier)->create();
 
-        /* @var $pricingModifiers \Illuminate\Support\Collection|\App\PricingModifier[] */
-        $pricingModifiers = factory(\App\Models\PricingModifierModel::class, 25 * $seedingMultiplier)->create();
+        $pricingModifiers = PricingModifier::factory()->count(25 * $seedingMultiplier)->create();
 
-        $pricingOptions->each(function (\App\Models\PricingOptionModel $pricingOption) use ($pricingModifiers, $seedingMultiplier) {
+        $pricingOptions->each(function (PricingOption $pricingOption) use ($pricingModifiers, $seedingMultiplier) {
+            Product::factory()->count(2 * $seedingMultiplier)->create(['pricing_option_id' => $pricingOption->id]);
 
-            factory(\App\Models\ProductModel::class, 2 * $seedingMultiplier)->create(['pricing_option_id' => $pricingOption->getId()]);
-            $applyModifiers = $pricingModifiers->random(rand(0, 8));
+            $applyModifiers = $pricingModifiers->random(random_int(0, 8));
 
             if ($applyModifiers->count()) {
-
                 $attachModifiers = [];
 
                 $applyModifiers->each(function ($modifier) use (&$attachModifiers) {
-                    $attachModifiers[$modifier->getId()] = ['active' => rand(0, 1), 'valid_from' => \Carbon\Carbon::now()];
+                    $attachModifiers[$modifier->id] = [
+                        'active' => random_int(0, 1),
+                        'valid_from' => Carbon::now(),
+                    ];
                 });
 
                 $pricingOption->pricingModifiers()->attach($attachModifiers);
             }
         });
 
-        factory(\App\Models\MemberModel::class, 500)->create();
-        factory(\App\Models\VenueModel::class, 20)->create();
+        Member::factory()->count(500)->create();
+        Venue::factory()->count(20)->create();
     }
 }

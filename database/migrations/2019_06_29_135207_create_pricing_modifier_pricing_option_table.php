@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePricingOptionPricingModifiersTable extends Migration
+class CreatePricingModifierPricingOptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePricingOptionPricingModifiersTable extends Migration
      */
     public function up()
     {
-        Schema::create('pricing_option_pricing_modifiers', function (Blueprint $table) {
+        Schema::create('pricing_modifier_pricing_option', function (Blueprint $table) {
             $table->unsignedInteger('pricing_modifier_id');
             $table->unsignedInteger('pricing_option_id');
             $table->dateTime('valid_from');
