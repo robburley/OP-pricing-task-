@@ -63,7 +63,7 @@ class CalculateProductPrice extends Command
                     )
                 );
 
-                return 1;
+                return self::SUCCESS;
             }
         } catch (ValidationException $e) {
             foreach ($e->errors() as $key => $errors) {
@@ -71,6 +71,6 @@ class CalculateProductPrice extends Command
             }
         }
 
-        return 0;
+        return self::FAILURE;
     }
 }
