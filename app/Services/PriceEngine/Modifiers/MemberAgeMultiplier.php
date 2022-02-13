@@ -9,10 +9,9 @@ class MemberAgeMultiplier extends BaseModifier
         $age = $this->member->age;
         $from = $settings['age_range']['from'] ?? null;
         $to = $settings['age_range']['to'] ?? null;
-        $multiplier = $settings['multiplier'] ?? 1;
 
         if ($to && $from && ($age <= $to) && ($age >= $from)) {
-            return $price * $multiplier;
+            return $price * ($settings['multiplier'] ?? 1);
         }
 
         return $price;
