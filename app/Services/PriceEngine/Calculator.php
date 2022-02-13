@@ -36,7 +36,7 @@ class Calculator
     {
         $basePrice = $this->product->pricingOption->price;
 
-        $prices = [['Base Price' => $basePrice]];
+        $prices = [$basePrice];
 
         foreach ($this->product->pricingOption->currentPricingModifiers as $pricingModifier) {
             $modifier = $this->getModifier($pricingModifier->type);
