@@ -87,7 +87,7 @@ We've provided interfaces and models for each object in the `App` and `App/Model
 ####Rob's Comments
 `A brief README description of the approach you took and why, any shortcuts you took, issues encountered etc.`
 
-I decided to use a simple CLI command that will take ask the user for the 3 inputs, validate that they exist in the database the process and return the lowest price for the customer.
+I decided to use a simple CLI command that will ask the user for the 3 inputs, validate that they exist in the database then process, and return the lowest price for the customer.
 
 As you had the pricing modifier type in the database I decided to use a pattern of holding a mapping between the identifier of the modifier and a class to carry out the operation, returning the price then ordering it lowest to highest and returning the first value.
 
